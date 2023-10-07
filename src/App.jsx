@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [number, setNumber] = useState(0);
+
+  const handleDecrementNum = () => {
+    setNumber(number - 1);
+  };
+  const handleIncrementNum = () => {
+    setNumber(number + 1);
+  };
+  const handleResetNum = () => {
+    setNumber(0);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <div className="bg-slate-900 text-white w-full h-screen flex justify-center flex-col">
+        <div className="mx-auto border rounded-lg my-5">
+          <h1 className="text-center text-4xl font-bold my-5 mx-2">{number}</h1>
+          <div className="border-t">
+            <button
+              className="py-2 max-w-xs px-6 border rounded-lg m-4 font-bold text-lg "
+              onClick={handleDecrementNum}
+            >
+              -
+            </button>
+            <button
+              className="py-2 px-5 border rounded-lg m-4 font-bold text-lg "
+              onClick={handleIncrementNum}
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <button
+          className="mx-auto py-1 px-7 border rounded-lg  my-8 font-bold text-lg min-w-lg"
+          onClick={handleResetNum}
+        >
+          Reset
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
